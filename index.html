@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Architect Uzzal Singha</title>
+
+  <!-- set saved theme before page paints (prevents white flash) -->
+  <script>
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem("theme"); } catch (e) {}
+      if (!t) t = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+      document.documentElement.setAttribute("data-theme", t);
+    })();
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- TOP: name + main menu -->
+  <header class="header">
+    <h1 class="logo"><a href="index.html">ARCHITECT<br>UZZAL SINGHA</a></h1>
+    <nav class="top-nav">
+      <a href="#">RESUME</a>
+      <a href="project.html">PROJECTS</a>
+      <a href="#">INCHAO</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <!-- LEFT: side menu (items come from script.js) -->
+    <ul class="side-menu" id="sideMenu"></ul>
+
+    <!-- CENTER: this box changes when you click a menu item -->
+    <section class="center-box" id="centerBox"></section>
+
+    <!-- RIGHT: short intro -->
+    <aside class="intro">
+      Architect and PMP®-certified professional with over 10 years of experience in
+      architectural design, interior design, construction, and project management.
+    </aside>
+  </main>
+
+  <!-- BOTTOM: theme button | email | social icons -->
+  <footer class="footer">
+    <button class="theme-toggle" id="themeToggle" type="button"
+            role="switch" aria-checked="false" aria-label="Toggle dark mode"></button>
+
+    <a class="mail" href="mailto:your@email.com">your@email.com</a>
+
+    <div class="social">
+      <a href="#" aria-label="Facebook">f</a>
+      <a href="#" aria-label="LinkedIn">in</a>
+      <a href="https://flickr.com" class="flickr" aria-label="Flickr"><span></span><span></span></a>
+      <a href="tel:+18005550199" aria-label="Call">&#9743;</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+ 
+</body>
+</html>

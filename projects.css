@@ -1,0 +1,110 @@
+/* ---------- Album page ----------
+   Header on top, footer at bottom and the filter stay still.
+   Only the album area in the middle scrolls up and down.
+
+   >1100px : your original row layout (rows built by your script)
+   <=1100px: pictures flow into a fluid grid -> 3 / 2 / 1 columns,
+             every picture keeps its own shape (nothing cropped). */
+
+:root { --footer-h: 56px; }   /* <- set this to your real footer height */
+
+/* page = exactly the screen height */
+body { height: 100vh; height: 100dvh; overflow: hidden; display: flex; flex-direction: column; }
+body > header, body > footer { flex: none; }
+
+/* ----- Album (scrolls) ----- */
+.album { flex: 1 1 auto; min-height: 0; overflow-y: auto; overflow-x: hidden;
+         -webkit-overflow-scrolling: touch; overscroll-behavior: contain;
+         scroll-behavior: smooth; scrollbar-width: thin; scroll-padding-top: 20px;
+         padding: 40px 170px 60px 9vw; }
+
+.gallery { display: flex; flex-direction: column; gap: 40px; transition: opacity .25s; }
+.gallery.loading { opacity: .4; }
+.row { display: flex; gap: clamp(10px, 5vw, 75px); align-items: flex-end; }
+
+.item { position: relative; display: block; min-width: 0;
+        background: #eee; overflow: hidden; text-decoration: none;
+        -webkit-tap-highlight-color: transparent; }
+.item img { width: 100%; height: 100%; display: block; animation: fadeIn .5s ease both; }
+.item.no-link { cursor: default; }
+
+.item span { position: absolute; inset: 0; display: grid; place-items: center;
+             padding: 8px; text-align: center; overflow-wrap: anywhere;
+             background: rgba(0,0,0,.55); color: #fff; font-size: 13px; letter-spacing: 1.5px;
+             text-transform: uppercase; opacity: 0; transition: opacity .3s; }
+.item:hover span, .item:focus-visible span { opacity: 1; }
+
+.item:focus-visible, .filter li:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+.empty { padding: 40px 0; font-size: 13px; letter-spacing: 1px; opacity: .6; }
+
+/* ----- Filter (always fixed) ----- */
+.filter { position: fixed; right: 30px; bottom: 60px; z-index: 5;
+          list-style: none; margin: 0; padding: 0; text-align: right; }
+.filter li { font-size: 13px; letter-spacing: 1px; padding: 8px 0; cursor: pointer;
+             width: fit-content; margin-left: auto; border-bottom: 1px solid transparent;
+             transition: border-color .2s, opacity .2s; user-select: none; }
+.filter li:hover { opacity: .65; }
+.filter li.active { border-bottom-color: var(--text, currentColor); }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes shimmer { to { background-position: -200% 0; } }
+
+.item.broken { border: 1px dashed #bbb; min-height: 120px; }
+.item.broken::before { content: "Not found: " attr(data-file); position: absolute; inset: 0;
+                       display: grid; place-items: center; padding: 10px; text-align: center;
+                       font-size: 11px; color: #a33; word-break: break-all; }
+
+/* ================= Tablet (up to 800px) ================= */
+@media (max-width: 800px) {
+  .album { padding: 30px 70px 50px 6vw; }
+  .gallery { gap: 28px; }
+  .row { gap: 16px; }
+
+  .filter { right: 16px; bottom: 40px; }
+}
+
+/* ================= Phone (up to 500px) ================= */
+@media (max-width: 500px) {
+
+  /* header */
+  .logo { font-size: 30px; line-height: 1.15; }
+  .top-nav { gap: 18px; flex-wrap: wrap; }
+  .top-nav a { font-size: 11px; }
+
+  /* album: leave room on the right for the vertical filter */
+  .album { padding: 24px 46px 40px 18px; }
+  .gallery { gap: 22px; }
+
+  /* one picture per row, centered, keeps its own shape */
+  .row { gap: 0; justify-content: center; align-items: center; }
+  .item { max-width: 100%; }
+
+  /* hover text doesn't exist on touch, so show a light title bar instead */
+  .item span { opacity: 0; }
+  .item:active span { opacity: 1; }
+
+  /* filter: vertical text on the right edge */
+  .filter {
+    right: 10px;
+    bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 28px;
+  }
+  .filter li {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);      /* text reads bottom -> top */
+    font-size: 13px;
+    letter-spacing: 1.5px;
+    padding: 0 8px;                 /* space between text and underline */
+    margin: 0;
+    border-bottom: 0;
+    border-left: 1px solid transparent;  /* becomes the line beside the text */
+  }
+  .filter li.active { border-left-color: var(--text, currentColor); }
+
+  /* broken-image label smaller */
+  .item.broken { min-height: 90px; }
+  .item.broken::before { font-size: 10px; }
+}

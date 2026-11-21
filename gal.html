@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="Residence in Pandughor, Cumilla — a project by Architect Uzzal Singha.">
+  <meta name="theme-color" content="#050505">
+  <title>Residence | Architect Uzzal Singha</title>
+  <script>
+    document.documentElement.classList.add('js');
+    setTimeout(function () { document.documentElement.classList.add('no-wait'); }, 5000);
+  </script>
+  <link rel="preload" as="image" href="images/babu.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Questrial&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="gal.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- SECTION 1: header -->
+  <header class="header">
+    <h1 class="logo">ARCHITECT<br>UZZAL SINGHA</h1>
+    <nav class="top-nav" aria-label="Main">
+      <a href="index.html">HOME</a>
+      <a href="#">RESUME</a>
+      <a href="project.html">PROJECTS</a>
+      <a href="#">INCHAO</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- 1. Description -->
+    <section class="description">
+      <figure class="description__img">
+        <img src="images/babu.png" alt="Brick-vaulted verandah of the residence" fetchpriority="high" decoding="async">
+      </figure>
+      <div class="description__text">
+        <h1>Residence</h1>
+        <nav aria-label="Breadcrumb">
+          <p class="breadcrumb">
+            <a href="index.html">Home</a> &gt; <a href="projects.html">Projects</a> &gt;
+            <a href="projects.html">Architecture</a> &gt; <span aria-current="page">Residence</span>
+          </p>
+        </nav>
+        <p>Rooted in nature and shaped by thoughtful design, this school stands as a harmonious blend of architecture and environment. With its vast open field for play, a tranquil pond that mirrors the sky, and courtyards that invite learning beyond the classroom, this is not just a place to study, but a place to grow. Here, education meets serenity, and every brick tells a story of vision, care, and community.</p>
+      </div>
+    </section>
+
+    <!-- 2. Plans + info -->
+    <section class="plans" aria-label="Plans and project information">
+      <img src="images/pan.jpg" alt="Floor plan, first view" loading="lazy" decoding="async">
+      <div class="info">
+        <dl>
+          <div><dt>Location</dt><dd>Pandughor, Cumilla</dd></div>
+          <div><dt>Client</dt><dd>Pandughor Group LTD.</dd></div>
+          <div><dt>Documentation</dt><dd>Architecture In Documents-AID</dd></div>
+        </dl>
+        <a href="#" target="_blank" rel="noopener noreferrer">View Openhouse Architects &amp; Engineers<span class="visually-hidden"> (opens in a new tab)</span></a>
+        <a href="#" target="_blank" rel="noopener noreferrer">View Documentation of ARCHDOCU<span class="visually-hidden"> (opens in a new tab)</span></a>
+      </div>
+      <img src="images/sumon.png" alt="Floor plan, second view" loading="lazy" decoding="async">
+    </section>
+
+    <!-- 3. Gallery -->
+    <section class="gallery" aria-labelledby="gallery-title">
+      <h2 id="gallery-title">Gallery</h2>
+      <div class="gallery__grid" id="gallery">
+        <button type="button" class="thumb"><img src="images/babu.png" alt="Terracotta figures beside a brick wall" loading="lazy" decoding="async"></button>
+        <button type="button" class="thumb"><img src="images/IMG_0734@2x.jpg" alt="Aerial view of the courtyard and entrance" loading="lazy" decoding="async"></button>
+        <button type="button" class="thumb"><img src="images/pan.jpg" alt="Brick corner with jali screen" loading="lazy" decoding="async"></button>
+        <button type="button" class="thumb"><img src="images/babu.png" alt="Terracotta figures beside a brick wall" loading="lazy" decoding="async"></button>
+        <button type="button" class="thumb"><img src="images/IMG_0734@2x.jpg" alt="Aerial view of the courtyard and entrance" loading="lazy" decoding="async"></button>
+        <button type="button" class="thumb"><img src="images/sumon.png" alt="Floor plan, second view" loading="lazy" decoding="async"></button>
+        <button type="button" class="thumb"><img src="images/pan.jpg" alt="Brick corner with jali screen" loading="lazy" decoding="async"></button>
+        <button type="button" class="thumb"><img src="images/babu.png" alt="Terracotta figures beside a brick wall" loading="lazy" decoding="async"></button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button type="button" class="lb-close" aria-label="Close">&times;</button>
+    <button type="button" class="lb-prev" aria-label="Previous photo">&#8249;</button>
+    <img src="" alt="">
+    <button type="button" class="lb-next" aria-label="Next photo">&#8250;</button>
+  </div>
+
+  <script src="gal.js"></script>
+</body>
+</html>
